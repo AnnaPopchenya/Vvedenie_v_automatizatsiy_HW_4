@@ -16,6 +16,7 @@ public class CourierInfoTest extends AbstractTest {
             Transaction transaction = session.beginTransaction();
 
             CourierInfoEntity newCourier = new CourierInfoEntity();
+            //тут надо установить еще courierId
             newCourier.setFirstName("Alice");
             newCourier.setLastName("Smith");
             newCourier.setPhoneNumber("+123456789");
@@ -32,6 +33,7 @@ public class CourierInfoTest extends AbstractTest {
     @Test
     void testGetCourierInfo() {
         try (Session session = getSession()) {
+            //тут courier не будет получен, он будет NULL
             CourierInfoEntity courier = session.get(CourierInfoEntity.class, (short) 1);
 
             assertNotNull(courier);
@@ -46,6 +48,7 @@ public class CourierInfoTest extends AbstractTest {
         try (Session session = getSession()) {
             Transaction transaction = session.beginTransaction();
 
+            //тут courier не будет получен, он будет NULL
             CourierInfoEntity courier = session.get(CourierInfoEntity.class, (short) 1);
             courier.setPhoneNumber("+987654321");
 
@@ -62,6 +65,7 @@ public class CourierInfoTest extends AbstractTest {
         try (Session session = getSession()) {
             Transaction transaction = session.beginTransaction();
 
+            //тут courier не будет получен, он будет NULL
             CourierInfoEntity courier = session.get(CourierInfoEntity.class, (short) 1);
             session.delete(courier);
 
